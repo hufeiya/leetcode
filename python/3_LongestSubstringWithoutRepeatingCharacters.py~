@@ -1,0 +1,32 @@
+class Solution:
+    # @param {string} s
+    # @return {integer}
+    def lengthOfLongestSubstring(self, s):
+        if s == "":
+            return 0
+        hash = {}
+        max = 0
+        tempMax = 0
+        i = 0
+        start = 0
+        while i < len(s):
+            if s[i] not in hash:
+                tempMax += 1
+                hash[s[i]] = i
+            else:
+                tempMax -= hash[s[i]]
+                j = start
+                temp = hash[s[i]]
+                while j <= temp:
+                    print i,j
+                    del hash[s[j]]
+                    j += 1
+                start = temp + 1
+                if tempMax > max:
+                    max = tempMax
+            if i == len(s)-1 and tempMax > max:
+                max = tempMax
+            i += 1
+        return max
+p = Solution()
+print p.lengthOfLongestSubstring('aa')
