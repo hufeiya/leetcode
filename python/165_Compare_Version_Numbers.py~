@@ -1,0 +1,22 @@
+class Solution(object):
+    def compareVersion(self, version1, version2):
+        """
+        :type version1: str
+        :type version2: str
+        :rtype: int
+        """
+        s1 = version1.split('.')
+        s2 = version2.split('.')
+        print s1,s2
+        length = max(len(s1),len(s2))
+        for i in xrange(length):
+            if i == len(s1) or int(s1[i]) < int(s2[i]):
+                return -1
+            elif i == len(s2) or int(s1[i]) > int(s2[i]):
+                return 1
+            else :
+                continue
+        return 0
+if __name__ == '__main__':
+    fuck = Solution()
+    fuck.compareVersion('1.1','1')
